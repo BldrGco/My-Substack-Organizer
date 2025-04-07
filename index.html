@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Substack Organizer</title>
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <style>
+    .grid-view { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .list-view { display: block; }
+    .list-item { margin-bottom: 15px; padding: 10px; border: 1px solid #ddd; }
+    .item { padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+    .item h3 { margin: 0; }
+    .item p { margin: 5px 0; }
+    .item a { color: blue; text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>My Substack Organizer</h1>
+    <p>Organize your Substack subscriptions with ease!</p>
+  </header>
+
+  <!-- CSV Upload Section -->
+  <section>
+    <label for="csvFile">Upload CSV File:</label>
+    <input type="file" id="csvFile" accept=".csv">
+  </section>
+
+  <!-- View Toggle Section -->
+  <section>
+    <button id="viewToggle">Switch to List View</button>
+    <label for="categoryFilter">Filter by Category:</label>
+    <select id="categoryFilter">
+      <option value="all">All Categories</option>
+    </select>
+  </section>
+
+  <!-- Data Display Section -->
+  <section id="data-container" class="grid-view"></section>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+<script src="app.js"></script>
+</html>
