@@ -3,44 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Substack Organizer</title>
-  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-  <style>
-    .grid-view { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .list-view { display: block; }
-    .list-item { margin-bottom: 15px; padding: 10px; border: 1px solid #ddd; }
-    .item { padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
-    .item h3 { margin: 0; }
-    .item p { margin: 5px 0; }
-    .item a { color: blue; text-decoration: underline; }
-  </style>
+  <title>Substack Organizer</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-
   <header>
     <h1>My Substack Organizer</h1>
-    <p>Organize your Substack subscriptions with ease!</p>
-  </header>
-
-  <!-- CSV Upload Section -->
-  <section>
-    <label for="csvFile">Upload CSV File:</label>
-    <input type="file" id="csvFile" accept=".csv">
-  </section>
-
-  <!-- View Toggle Section -->
-  <section>
-    <button id="viewToggle">Switch to List View</button>
-    <label for="categoryFilter">Filter by Category:</label>
-    <select id="categoryFilter">
-      <option value="all">All Categories</option>
+    <input type="text" id="search" placeholder="Search...">
+    <select id="filter">
+      <option value="all">All</option>
+      <option value="active">Active</option>
+      <option value="paused">Paused</option>
+      <option value="dropped">Dropped</option>
     </select>
-  </section>
-
-  <!-- Data Display Section -->
-  <section id="data-container" class="grid-view"></section>
-
+    <input type="file" id="csv-upload" accept=".csv" onchange="handleCSVUpload(event)">
+    <button id="add-sub">Add Subscription</button>
+    <button id="export">Export Data</button>
+  </header>
+  <div id="subscriptions" class="grid"></div>
+  <div id="posts" class="grid"></div>
+  <div id="charts">
+    <canvas id="statusChart" width="400" height="200"></canvas>
+    <canvas id="categoryChart" width="400" height="200"></canvas>
+  </div>
+  <script src="script.js"></script>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-<script src="app.js"></script>
 </html>
